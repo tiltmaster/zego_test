@@ -30,6 +30,7 @@ Future<void> logout() async {
 /// on user login
 void onUserLogin() {
   callController ??= ZegoUIKitPrebuiltCallController();
+  //TODO Disable this for ZegoUIKitPrebuiltCall() to work otherwise Voice_call.dart will not work.
   ZegoUIKitPrebuiltCallInvitationService().init(
     appID: APP - ID - HERE,
     appSign: APP - SIGN - HERE,
