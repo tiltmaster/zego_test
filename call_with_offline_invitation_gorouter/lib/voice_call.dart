@@ -21,8 +21,8 @@ class CallPageState extends State<CallPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: ZegoUIKitPrebuiltCall(
-        appID: yourAppID,
-        appSign: yourAppSign,
+        appID: APP - ID - HERE,
+        appSign: APP - SIGN - HERE,
         userID: '123456788965',
         userName: 'testUser',
         callID: '1234',

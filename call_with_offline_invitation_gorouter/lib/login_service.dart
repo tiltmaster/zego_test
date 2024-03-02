@@ -30,6 +30,13 @@ Future<void> logout() async {
 /// on user login
 void onUserLogin() {
   callController ??= ZegoUIKitPrebuiltCallController();
+  ZegoUIKitPrebuiltCallInvitationService().init(
+    appID: APP - ID - HERE,
+    appSign: APP - SIGN - HERE,
+    userID: currentUser.id,
+    userName: currentUser.name,
+    plugins: [ZegoUIKitSignalingPlugin()],
+  );
 
   /// 4/5. initialized ZegoUIKitPrebuiltCallInvitationService when account is logged in or re-logged in
 }

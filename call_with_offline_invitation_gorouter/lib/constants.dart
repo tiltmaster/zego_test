@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 
-const int yourAppID = PUT_ID_HERE;
-const String yourAppSign = PUT_ID_HERE;
+// const int yourAppID = PUT_ID_HERE;
+// const String yourAppSign = PUT_ID_HERE;
 
 class PageRouteNames {
   static const String login = '/login';
