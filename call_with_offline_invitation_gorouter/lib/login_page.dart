@@ -2,10 +2,12 @@
 
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // Project imports:
 import 'constants.dart';
 import 'login_service.dart';
+import 'main.dart';
 import 'util.dart';
 
 class LoginPage extends StatefulWidget {
@@ -116,9 +118,7 @@ class LoginPageState extends State<LoginPage> {
                 userName: 'user_${_userIDTextCtrl.text}',
               ).then((value) {
                 onUserLogin();
-
-                Navigator.pushNamed(
-                  context,
+                navigatorKey.currentState!.context.pushNamed(
                   PageRouteNames.home,
                 );
               });

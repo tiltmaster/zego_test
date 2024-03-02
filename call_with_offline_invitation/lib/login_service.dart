@@ -39,14 +39,13 @@ void onUserLogin() {
       ZegoUIKitSignalingPlugin(),
     ],
     notificationConfig: ZegoCallInvitationNotificationConfig(
-      androidNotificationConfig: ZegoCallAndroidNotificationConfig(
-        showFullScreen: true,
+      androidNotificationConfig: ZegoAndroidNotificationConfig(
         channelID: "ZegoUIKit",
         channelName: "Call Notifications",
         sound: "call",
         icon: "call",
       ),
-      iOSNotificationConfig: ZegoCallIOSNotificationConfig(
+      iOSNotificationConfig: ZegoIOSNotificationConfig(
         systemCallingIconName: 'CallKitIcon',
       ),
     ),
@@ -62,9 +61,9 @@ void onUserLogin() {
       config.avatarBuilder = customAvatarBuilder;
 
       /// support minimizing, show minimizing button
-      config.topMenuBar.isVisible = true;
-      config.topMenuBar.buttons
-          .insert(0, ZegoCallMenuBarButtonName.minimizingButton);
+      config.topMenuBarConfig.isVisible = true;
+      config.topMenuBarConfig.buttons
+          .insert(0, ZegoMenuBarButtonName.minimizingButton);
 
       return config;
     },

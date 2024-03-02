@@ -32,42 +32,6 @@ void onUserLogin() {
   callController ??= ZegoUIKitPrebuiltCallController();
 
   /// 4/5. initialized ZegoUIKitPrebuiltCallInvitationService when account is logged in or re-logged in
-  ZegoUIKitPrebuiltCallInvitationService().init(
-    appID: yourAppID /*input your AppID*/,
-    appSign: yourAppSign /*input your AppSign*/,
-    userID: currentUser.id,
-    userName: currentUser.name,
-    notifyWhenAppRunningInBackgroundOrQuit: true,
-    androidNotificationConfig: ZegoAndroidNotificationConfig(
-      channelID: "ZegoUIKit",
-      channelName: "Call Notifications",
-      sound: "notification",
-    ),
-    iOSNotificationConfig: ZegoIOSNotificationConfig(
-      isSandboxEnvironment: false,
-      systemCallingIconName: 'CallKitIcon',
-    ),
-    plugins: [ZegoUIKitSignalingPlugin()],
-    controller: callController,
-    requireConfig: (ZegoCallInvitationData data) {
-      final config = (data.invitees.length > 1)
-          ? ZegoCallType.videoCall == data.type
-              ? ZegoUIKitPrebuiltCallConfig.groupVideoCall()
-              : ZegoUIKitPrebuiltCallConfig.groupVoiceCall()
-          : ZegoCallType.videoCall == data.type
-              ? ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
-              : ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall();
-
-      config.avatarBuilder = customAvatarBuilder;
-
-      /// support minimizing, show minimizing button
-      config.topMenuBarConfig.isVisible = true;
-      config.topMenuBarConfig.buttons
-          .insert(0, ZegoMenuBarButtonName.minimizingButton);
-
-      return config;
-    },
-  );
 }
 
 /// on user logout

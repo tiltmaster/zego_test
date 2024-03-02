@@ -2,10 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'secret.dart';
 
-const int yourAppID = YourSecret.appID;
-const String yourAppSign = YourSecret.appSign;
+const int yourAppID = PUT_ID_HERE;
+const String yourAppSign = PUT_ID_HERE;
 
 class PageRouteNames {
   static const String login = '/login';

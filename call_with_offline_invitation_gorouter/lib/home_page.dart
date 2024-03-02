@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:call_with_offline_invitation_gorouter/voice_call.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,6 +10,7 @@ import 'package:zego_uikit/zego_uikit.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
 // Project imports:
+import 'common.dart';
 import 'constants.dart';
 import 'login_service.dart';
 
@@ -20,10 +22,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final TextEditingController singleInviteeUserIDTextCtrl =
-      TextEditingController();
-  final TextEditingController groupInviteeUserIDsTextCtrl =
-      TextEditingController();
+  final TextEditingController singleInviteeUserIDTextCtrl = TextEditingController();
+  final TextEditingController groupInviteeUserIDsTextCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -125,39 +125,22 @@ class HomePageState extends State<HomePage> {
             inviteeUsersIDTextCtrl = TextEditingController();
             userInfo = [
               Text(
-                '${faker.person.firstName()}(${random.fromPattern([
-                      '######'
-                    ])})',
+                '${faker.person.firstName()}(${random.fromPattern(['######'])})',
                 style: textStyle,
               )
             ];
           }
 
-          return Column(
-            children: [
-              Row(
-                children: [
-                  const SizedBox(width: 20),
-                  ...userInfo,
-                  Expanded(child: Container()),
-                  sendCallButton(
-                    isVideoCall: false,
-                    inviteeUsersIDTextCtrl: inviteeUsersIDTextCtrl,
-                    onCallFinished: onSendCallInvitationFinished,
-                  ),
-                  sendCallButton(
-                    isVideoCall: true,
-                    inviteeUsersIDTextCtrl: inviteeUsersIDTextCtrl,
-                    onCallFinished: onSendCallInvitationFinished,
-                  ),
-                  const SizedBox(width: 20),
-                ],
+          return SingleChildScrollView(
+            child: Container(
+              height: 400,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CallPage()));
+                },
+                child: Text('Click me'),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                child: Divider(height: 1.0, color: Colors.grey),
-              ),
-            ],
+            ),
           );
         },
       ),
@@ -241,14 +224,7 @@ Widget sendCallButton({
     builder: (context, inviteeUserID, _) {
       var invitees = getInvitesFromTextCtrl(inviteeUsersIDTextCtrl.text.trim());
 
-      return ZegoSendCallInvitationButton(
-        isVideoCall: isVideoCall,
-        invitees: invitees,
-        resourceID: "zego_data",
-        iconSize: const Size(40, 40),
-        buttonSize: const Size(50, 50),
-        onPressed: onCallFinished,
-      );
+      return Container();
     },
   );
 }

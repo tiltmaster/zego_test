@@ -18,14 +18,13 @@ class CallPage extends StatefulWidget {
 class CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
-    final arguments = (ModalRoute.of(context)?.settings.arguments ??
-        <String, String>{}) as Map<String, String>;
+    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, String>{}) as Map<String, String>;
     final callID = arguments[PageParam.call_id] ?? '';
 
     return SafeArea(
       child: ZegoUIKitPrebuiltCall(
         appID: yourAppID /*input your AppID*/,
-        appSign: yourAppSign /*input your AppSign*/,
+        appSign: yourAppSign /* here input your AppSign*/,
         userID: currentUser.id,
         userName: currentUser.name,
         callID: callID,
